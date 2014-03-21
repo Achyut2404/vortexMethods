@@ -48,6 +48,7 @@ def plotVort(toMod,BCList,tim):
 	Change for different cases as required"""
 	
 	plt.figure()
+	plt.axis('equal')
 	plt.title('Test Case for RK-2 Viscous Flow Around a Cylinder \n Vorticity Plot: Time=%f'%tim)
 	[plt.plot(numpy.array(eachBC.points).transpose()[0],numpy.array(eachBC.points).transpose()[1],linewidth=3.0) for eachBC in BCList]
 	for eachList in toMod:

@@ -227,7 +227,7 @@ def test4RK2(Npanels=50):
 	Re=1000
 	delta=(1./Re)**0.5
 	lemda=delta*math.pi
-	gmin=0.1
+	gmin=0.2
 	#Define V_Infinite, field generators and modifiable points
 	vinf=numpy.array([1.0,0.0])
 	fieldGens=[]
@@ -249,7 +249,7 @@ def test4RK2(Npanels=50):
 	startTime=0.0
 	CFL=1.0
 	timeStep=CFL*lemda/((vinf.dot(vinf))**0.5)
-	endTime=8.0
+	endTime=6.0
 	timeMesh=dfn.linearTimeMesh(startTime,timeStep,endTime)
 
 	#Start time loop

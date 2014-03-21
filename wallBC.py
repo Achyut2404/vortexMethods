@@ -33,12 +33,12 @@ class wallNPNSBC:
 	def findVcp(self,fieldGens=[],vinf=0.0):
 		"""find V at control points.
 		This step is to be executed at starting of each step"""
-		self.vcp=definations.velField(self.cp,fieldGens,vinf)
+		self.vcp=dfn.velField(self.cp,fieldGens,vinf)
 	
 	def findVcps(self,fieldGens,vinf=0.0):
 		"""For slip boundary conditions Vcp is to be find slightly above the control point
 		that is done by using this function. """
-		self.vcps=definations.velField(self.cps,fieldGens,vinf)
+		self.vcps=dfn.velField(self.cps,fieldGens,vinf)
 	
 	
 	def closeNPBC(self,fieldGens):
@@ -85,7 +85,7 @@ def NPLinList(points,vcp,A,cp,normals):
 	"""Gives back a linear vortex sheet list, which will satisfy non penetration boundary conditions on wall defined by points. Points should be in the order of wall boundary line"""
 	B=NPB(points,vcp,normals)
 	gammas=findGamma(A,B)
-	linList=definations.linVortList()
+	linList=dfn.linVortList()
 	for i in range(len(points)):
 		if i==len(points)-1:
 			linList.addLinVortex(gammas[i],gammas[0],points[i],points[0])
@@ -110,8 +110,8 @@ def linNPA(points,cp,normals):
 			else:
 				l2=j+1
 				l0=j-1
-			linVo1=definations.linVortex(1.,0.,points[l1],points[l2])
-			linVo2=definations.linVortex(0.,1.,points[l0],points[l1])
+			linVo1=dfn.linVortex(1.,0.,points[l1],points[l2])
+			linVo2=dfn.linVortex(0.,1.,points[l0],points[l1])
 			vel=linVo1.fieldEffect(cp[i])+linVo2.fieldEffect(cp[i])
 			vdotN=vel.dot(normals[i])
 			A[i][j]=vdotN
@@ -217,7 +217,7 @@ def testCylBC1(Np=50):
 	pos=numpy.array(pos)
 	
 	#Calculate field at these positions
-	F=definations.velField(pos,fieldGens,vinf)
+	F=dfn.velField(pos,fieldGens,vinf)
 	
 	# Arrange field values in u and v in order to plot them
 	for i in range(len(X.flatten())):
